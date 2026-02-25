@@ -1,7 +1,6 @@
 // Criar uma função que retorne o valor total de cada pedido (FEITO)
-//Retornar apenas os pedidos entregues (FEITO)
 //Retornar o faturamento total apenas dos pedidos entregues (FEITO)
-//Retornar o cliente que mais gastou no total (FEITO)
+//Retornar o cliente que mais gastou (FEITO)
 
 const orders = [
   {
