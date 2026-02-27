@@ -38,12 +38,12 @@ const studentsReportCard = {
 			.map((student) => {
 				const total = student.scores.reduce((sum, n) => sum + n, 0)
 				const average = total / student.scores.length
-				if (average < 7) return {name: student.name, scores: student.scores, average, Situação: "Rodou"}
+				if (average < 7) return {name: student.name, scores: student.scores, average, Situacao: "Rodou"}
 				return {
 					name: student.name,
 					scores: student.scores,
 					average,
-					Situação: "Passou"
+					Situacao: "Passou"
 				};
 			});
 	},
@@ -53,11 +53,12 @@ const studentsReportCard = {
 
 		if (!studentGrade.length) return null;
 
-		return studentGrade.reduce((best, current) => {
-			best.Situação = 'Melhor Nota'
-			delete best.scores
-			return theBest = current.average > best.average ? current : best;
-		});
+		const best = studentGrade.reduce((best, current) =>
+			current.average > best.average ? current : best
+		)
+
+		best.Situacao = 'Melhor Nota'
+		return best
 	},
 };
 
