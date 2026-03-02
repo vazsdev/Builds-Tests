@@ -1,0 +1,33 @@
+___________________________________________________________________________________________________________________________
+Nível 1 — Aquecimento (filter + map)                                                                                       |
+                                                                                                                           |
+    1. Liste apenas as transações do tipo "compra".                                                                        |
+    2. Retorne um array só com os valores (value) de todas as transações.                                                  |
+    3. Retorne um array com os nomes dos usuários que fizeram estorno (sem repetição). Dica: pesquise Set em JavaScript.   |
+___________________________________________________________________________________________________________________________|
+Nível 2 — Acumulando números (reduce → número)                                                                             |
+                                                                                                                           |
+    4. Qual é o valor total de todas as compras?                                                                           |
+    5. Qual é a maior transação? Retorne o objeto inteiro, não só o valor.                                                 |
+    6. Qual é a média de valor entre todas as transações?                                                                  |
+                                                                                                                           |
+___________________________________________________________________________________________________________________________|
+Nível 3 — Agrupando (reduce → objeto)                                                                                      |
+                                                                                                                           |
+    7. Qual o total gasto por cada usuário? (só compras, ignorar estornos)                                                 |
+                                                                                                                           |
+    8. Quantas transações aconteceram por mês? Resultado esperado:                                                         |
+                                                                                                                           |
+    {"2024-01": 3, "2024-02": 3, "2024-03": 2}                                                                             |
+                                                                                                                           |
+    9. Qual o total movimentado por tipo? Resultado esperado:                                                              |
+                                                                                                                           |
+    {"compra": 1500, "estorno": 550}                                                                                       |
+                                                                                                                           |
+___________________________________________________________________________________________________________________________|
+Nível 4 — Combinando tudo                                                                                                  |
+                                                                                                                           |
+    10. Calcule o saldo real de cada usuário: soma das compras menos soma dos estornos.                                    |
+    11. Qual o mês com maior volume de compras (em valor total)?                                                           |
+    12. Encontre o usuário que mais gastou em um único mês. Retorne o usuário, o mês e o valor.                            |
+___________________________________________________________________________________________________________________________|
