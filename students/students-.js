@@ -29,7 +29,7 @@ const students = [
 	},
 ];
 
-//Sistema de verificação de notas
+//Sistema de verificação de notas (boletim)
 
 const studentsReportCard = {
 	getStudentsGrade(students) {
