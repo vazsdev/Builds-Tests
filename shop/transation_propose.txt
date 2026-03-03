@@ -1,5 +1,5 @@
 ___________________________________________________________________________________________________________________________
-Nível 1 — Aquecimento (filter + map)                                                                                       |
+Nível 1 — Aquecimento (filter + map) (FEITO)                                                                               |
                                                                                                                            |
     1. Liste apenas as transações do tipo "compra".                                                                        |
     2. Retorne um array só com os valores (value) de todas as transações.                                                  |
