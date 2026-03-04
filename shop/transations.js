@@ -13,7 +13,7 @@ const transactions = [
 
 //Serviço de Transações
 const transactionsService = {
-  getValidTransactions(transactions) {
+  getPurchases(transactions) {
     return transactions.reduce((validTransaction, item) => {
       if (item.type !== "compra") return validTransaction;
       validTransaction[item.id] = item;
@@ -26,10 +26,13 @@ const transactionsService = {
   },
 
   getChargebacks(transactions) {
-    return transactions.reduce((chargebacks, item) => {
-      if (item.type !== "estorno") return chargebacks;
-      chargebacks[item.user] = item.type;
-      return chargebacks;
+    return transactions.reduce((acc, item) => {
+      if (item.type !== "estorno") return acc;
+
+      acc[item.user] ??= [];
+      acc[item.user].push(item);
+
+      return acc;
     }, {});
   },
 
@@ -42,17 +45,10 @@ const transactionsService = {
   },
 
   getBiggestPurchase(transactions) {
-    const purchases = this.getValidTransactions(transactions);
-
-    return Object.values(purchases).reduce((total, item) => {
-      if (total === null) {
-        return item;
-      }
-      if (item.value > total.value) {
-        return item;
-      }
-      return total;
-    }, null);
+    return Object.values(this.getPurchases(transactions))
+    .reduce((biggest, current) =>
+      !biggest || current.value > biggest.value ? current : biggest
+    , null);
   },
 
   getPurchasesMedia(transactions) {
@@ -65,9 +61,29 @@ const transactionsService = {
     return total / values.length;
   },
 
+  getTotalEachCostumer(transactions) {
+
+    const validCostumer = this.getPurchases(transactions)
+
+    return Object.values(validCostumer).reduce((customer, { user, value }) => {
+
+      if (!customer[user]) {
+        customer[user] = {
+          totalGasto: 0,
+          quantidadeCompras: 0
+        };
+      }
+
+      customer[user].totalGasto += value;
+      customer[user].quantidadeCompras += 1;
+
+      return customer;
+    }, {})
+  },
+
   generate(transactions) {
     return {
-      validTransactions: this.getValidTransactions(transactions),
+      purchases: this.getPurchases(transactions),
       onlyValues: this.getValues(transactions),
       chargebacks: this.getChargebacks(transactions),
       total: this.getTotalRevenue(transactions).toLocaleString("pt-br", {
@@ -82,6 +98,7 @@ const transactionsService = {
           currency: "BRL",
         },
       ),
+      totalEachCostumer: this.getTotalEachCostumer(transactions),
     };
   },
 };
