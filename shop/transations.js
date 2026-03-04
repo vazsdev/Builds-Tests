@@ -86,18 +86,9 @@ const transactionsService = {
       purchases: this.getPurchases(transactions),
       onlyValues: this.getValues(transactions),
       chargebacks: this.getChargebacks(transactions),
-      total: this.getTotalRevenue(transactions).toLocaleString("pt-br", {
-        style: "currency",
-        currency: "BRL",
-      }),
+      total: this.getTotalRevenue(transactions),
       biggestPurchase: this.getBiggestPurchase(transactions),
-      purchasesMedia: this.getPurchasesMedia(transactions).toLocaleString(
-        "pt-br",
-        {
-          style: "currency",
-          currency: "BRL",
-        },
-      ),
+      purchasesMedia: this.getPurchasesMedia(transactions),
       totalEachCostumer: this.getTotalEachCostumer(transactions),
     };
   },
