@@ -69,13 +69,13 @@ const transactionsService = {
 
       if (!customer[user]) {
         customer[user] = {
-          totalGasto: 0,
-          quantidadeCompras: 0
+          purchaseTotal: 0,
+          purchaseQuantity: 0
         };
       }
 
-      customer[user].totalGasto += value;
-      customer[user].quantidadeCompras += 1;
+      customer[user].purchaseTotal += value;
+      customer[user].purchaseQuantity += 1;
 
       return customer;
     }, {})
